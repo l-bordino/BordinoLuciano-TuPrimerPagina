@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LetraCaja</title>
+    <title>Agregá tu película</title>
 </head>
 <body>
     <a href="">Inicio</a>
     <a href="/movie-list">Listado de pelis</a>
     <a href="/create-movie">Crear peli</a>
-    <h1>Bienvenido a LetraCaja</h1>
+    <h1>Acá vas a agregar tu película!</h1>
+    <form action="", method="POST">
+        {% csrf_token %}
+        {{formulario}}
+        <input type="submit" value="Agregá tu peli">
+    </form>
 </body>
 </html>

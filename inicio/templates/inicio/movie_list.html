@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de pelis cargadas</title>
+</head>
+<body>
+    <a href="">Inicio</a>
+    <a href="/movie-list">Listado de pelis</a>
+    <a href="/create-movie">Crear peli</a>
+    <h1>Filtrá tus películas favoritas!</h1>
+    <form action="">
+        {{formulario}}
+        <input type="submit" value='Buscar Peli'>
+        {% if movies %}
+        
+        <ul>
+            {% for movie  in movies %}
+                <li>
+                    {{movie}}
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %} <p>No hay pelis cargadas aún.</p>
+
+        {% endif %}
+    </form>
+</body>
+</html>
