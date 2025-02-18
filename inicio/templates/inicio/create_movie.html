@@ -6,13 +6,26 @@
     <title>Agregá tu película</title>
 </head>
 <body>
-    <a href="">Inicio</a>
-    <a href="/movie-list">Listado de pelis</a>
-    <a href="/create-movie">Crear peli</a>
+    <nav>
+        <a href={% url "inicio" %}>Inicio</a>
+        <a href={% url "create_movie" %}>Crear peli nueva</a>
+        <a href={% url "movie_list" %}>Listado de pelis</a>
+    </nav>
     <h1>Acá vas a agregar tu película!</h1>
     <form action="", method="POST">
         {% csrf_token %}
-        {{formulario}}
+        <label for="id_title">Título:</label>
+        {{formulario.title}} <br>
+        <label for="id_director">Director/xs:</label>
+        {{formulario.director}}<br>
+        <label for="id_release_year">Año de lanzamiento:</label>
+        {{formulario.release_year}}<br>
+        <label for="id_length">Duración (en minutos):</label>
+        {{formulario.length}}<br>
+        <label for="id_rating">Puntaje:</label>
+        {{formulario.rating}}<br>
+        <label for="id_genre">Género:</label>
+        {{formulario.genre}}<br>
         <input type="submit" value="Agregá tu peli">
     </form>
 </body>

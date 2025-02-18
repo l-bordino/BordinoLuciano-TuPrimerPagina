@@ -6,15 +6,31 @@
     <title>Lista de pelis cargadas</title>
 </head>
 <body>
-    <a href="">Inicio</a>
-    <a href="/movie-list">Listado de pelis</a>
-    <a href="/create-movie">Crear peli</a>
+    <nav>
+        <a href={% url "inicio" %}>Inicio</a>
+        <a href={% url "create_movie" %}>Crear peli nueva</a>
+        <a href={% url "movie_list" %}>Listado de pelis</a>
+    </nav>
+    
     <h1>Filtrá tus películas favoritas!</h1>
     <form action="">
-        {{formulario}}
+        <h2>Filtros:</h2>
+        <label for="id_title">Título:</label>
+        {{formulario.title}}<br>
+        <label for="id_director">Director/xs:</label>
+        {{formulario.director}}<br>
+        <label for="id_release_year">Año de lanzamiento:</label>
+        {{formulario.release_year}}<br>
+        <label for="id_length">Menor duración a (en minutos):</label>
+        {{formulario.length}}<br>
+        <label for="id_rating">Mayor puntaje que:</label>
+        {{formulario.rating}}<br>
+        <label for="id_genre">Género:</label>
+        {{formulario.genre}}<br>
         <input type="submit" value='Buscar Peli'>
+
+        <h2>Lista de pelis cargadas:</h2>
         {% if movies %}
-        
         <ul>
             {% for movie  in movies %}
                 <li>

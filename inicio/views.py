@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from inicio.forms import CreateMovie, FindMovie
 from inicio.models import Movie
 
@@ -25,6 +25,7 @@ def create_movie(request):
             movie.save()
             
             
+            return redirect('movie_list')
     
     return render(request, 'inicio/create_movie.html', {'formulario': formulario})
     
@@ -34,5 +35,26 @@ def movie_list(request):
     if formulario.is_valid():
         movie_by_title = formulario.cleaned_data.get('title')
         movie_by_director = formulario.cleaned_data.get('director')
-        movies = Movie.objects.filter(title__icontains=movie_by_title, director__icontains=movie_by_director)
+        movie_by_release_year = formulario.cleaned_data.get('release_year')
+        movie_by_length = formulario.cleaned_data.get('length')
+        movie_by_genre = formulario.cleaned_data.get('genre')
+        movie_by_rating = formulario.cleaned_data.get('rating')
+        
+        filtro = {}
+        if movie_by_title:
+            filtro["title__icontains"] = movie_by_title
+        if movie_by_director:
+            filtro["director__icontains"] = movie_by_director
+        if movie_by_release_year:
+            filtro["release_year__exact"] = movie_by_release_year
+        if movie_by_length:
+            filtro["length__lte"] = movie_by_length
+        if movie_by_rating:
+            filtro["rating__gt"] = movie_by_rating
+        if movie_by_genre:
+            filtro["genre__exact"] = movie_by_genre
+        
+        if filtro:    
+            movies = Movie.objects.filter(**filtro)
+        
     return render(request, 'inicio/movie_list.html', {'movies': movies, 'formulario': formulario})
