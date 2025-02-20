@@ -1,6 +1,6 @@
 En esta aplicación se podrá:
-- Crear pelis nuevas: agregar películas en la base de datos con los campos marcados por pantalla (puntaje no requerido)
-- Filtrar películas: desde las películas cargadas, se van a poder filtrar por:
+- Crear pelis nuevas (/create_movie): agregar películas en la base de datos con los campos marcados por pantalla (puntaje no requerido)
+- Filtrar películas (/movie_list): desde las películas cargadas, se van a poder filtrar por:
 1) Título: exacto o que contenga alguna caracter o palabra deseada
 2) Director: igual al título
 3) Año de lanzamiento: exacto
