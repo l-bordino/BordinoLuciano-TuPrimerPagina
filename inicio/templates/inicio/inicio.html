@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LetraCaja</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "create_movie" %}>Crear peli nueva</a>
-        <a href={% url "movie_list" %}>Listado de pelis</a>
-    </nav>
-    <h1>Bienvenido a LetraCaja</h1>
-    <h2>En esta web vas a poder ingresar todas las películas que veas, puntuarlas y filtrarlas cuando quieras y donde quieras</h2>
-    <nav>
-        <p>¿Querés ingresar una peli nueva?</p><a href="/create-movie"> Hacé click acá!</a>
-        <p>¿Querés ver el listado de pelis ingresadas y filtrarlas?</p><a href="/movie-list"> Hacé click acá!</a>
-    </nav>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block title_head %}LetraCaja{% endblock title_head %}
+
+{% block title_h1 %}Bienvenido a LetraCaja{% endblock title_h1 %}
+{% block contenido %}
+<h2>En esta web vas a poder ingresar todas las películas que veas, puntuarlas y filtrarlas cuando quieras y donde quieras</h2>
+<nav>
+    <p>¿Querés ingresar una peli nueva?</p><a href="/create-movie"> Hacé click acá!</a>
+    <p>¿Querés ver el listado de pelis ingresadas y filtrarlas?</p><a href="/movie-list"> Hacé click acá!</a>
+</nav>
+{% endblock contenido %}
