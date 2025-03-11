@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_head %}{{movie.title}} ({{movie.release_year}}){% endblock title_head %}
+
+{% block title_h1 %}Información de {{movie.title}}{% endblock title_h1 %}
+
+{% block contenido %}
+<ul>
+    <li>Título: {{movie.title}}</li>
+    <li>Director/xs: {{movie.director}}</li>
+    <li>Año de lanzamiento: {{movie.release_year}}</li>
+    <li>Duración: {{movie.length}}</li>
+    {% if movie.rating %}
+    <li>Puntaje: {{movie.rating}}</li>
+    {% endif %}
+    <li>Género: {{movie.genre}}</li>
+</ul>
+{% endblock contenido %}

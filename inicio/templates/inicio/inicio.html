@@ -1,12 +1,13 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title_head %}LetraCaja{% endblock title_head %}
 
 {% block title_h1 %}Bienvenido a LetraCaja{% endblock title_h1 %}
 {% block contenido %}
-<h2>En esta web vas a poder ingresar todas las películas que veas, puntuarlas y filtrarlas cuando quieras y donde quieras</h2>
-<nav>
-    <p>¿Querés ingresar una peli nueva?</p><a href="/create-movie"> Hacé click acá!</a>
-    <p>¿Querés ver el listado de pelis ingresadas y filtrarlas?</p><a href="/movie-list"> Hacé click acá!</a>
-</nav>
+<h2>En esta web vas a poder ingresar todas las películas que veas, puntuarlas y filtrarlas cuando y donde quieras</h2>
+<ul>
+    <li>¿Querés ingresar una peli nueva?</li><a href="/create-movie"> Hacé click acá!</a>
+    <li>¿Querés ver el listado de pelis ingresadas y filtrarlas?</li><a href="/movie-list"> Hacé click acá!</a>
+</ul>
 {% endblock contenido %}

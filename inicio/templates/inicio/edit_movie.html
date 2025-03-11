@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title_head %}Agregá tu película{% endblock title_head %}
+{% block title_head %}Editar{% endblock title_head %}
 
-{% block title_h1 %}Acá vas a agregar tu película!{% endblock title_h1 %}
+{% block title_h1 %}Editar tu peli{% endblock title_h1 %}
 
 {% block contenido %}
 <form action="", method="POST">
@@ -20,6 +20,6 @@
     {{formulario.genre}}<br>
     <label for="id_rating">Puntaje:</label>
     {{formulario.rating}}<br>
-    <input type="submit" value="Agregá tu peli">
+    <input type="submit" value="Modificá tu peli">
 </form>
 {% endblock contenido %}

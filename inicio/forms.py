@@ -16,3 +16,9 @@ class FindMovie(forms.Form):
     length = forms.IntegerField(required=False) 
     genre = forms.ChoiceField(choices=[("", "Seleccione un género")] + Movie.GENRE_CHOICES, required=False)
     rating = forms.ChoiceField(choices=[("", "Seleccione un rating")] + Movie.RATING_CHOICES, required=False)
+    
+class EditMovie(forms.ModelForm):
+    
+    class Meta:
+        model = Movie
+        fields = '__all__'

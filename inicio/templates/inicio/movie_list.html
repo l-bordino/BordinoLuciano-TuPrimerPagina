@@ -1,46 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lista de pelis cargadas</title>
-</head>
-<body>
-    <nav>
-        <a href={% url "inicio" %}>Inicio</a>
-        <a href={% url "create_movie" %}>Crear peli nueva</a>
-        <a href={% url "movie_list" %}>Listado de pelis</a>
-    </nav>
-    
-    <h1>Filtrá tus películas favoritas!</h1>
-    <form action="">
-        <h2>Filtros:</h2>
-        <label for="id_title">Título:</label>
-        {{formulario.title}}<br>
-        <label for="id_director">Director/xs:</label>
-        {{formulario.director}}<br>
-        <label for="id_release_year">Año de lanzamiento:</label>
-        {{formulario.release_year}}<br>
-        <label for="id_length">Menor duración a (en minutos):</label>
-        {{formulario.length}}<br>
-        <label for="id_rating">Mayor puntaje que:</label>
-        {{formulario.rating}}<br>
-        <label for="id_genre">Género:</label>
-        {{formulario.genre}}<br>
-        <input type="submit" value='Buscar Peli'>
+{% extends "base.html" %}
+{% load static %}
 
-        <h2>Lista de pelis cargadas:</h2>
-        {% if movies %}
-        <ul>
-            {% for movie  in movies %}
-                <li>
-                    {{movie}}
-                </li>
-            {% endfor %}
-        </ul>
-        {% else %} <p>No hay pelis cargadas aún.</p>
+{% block title_head %}Lista de pelis cargadas{% endblock title_head %}
 
-        {% endif %}
-    </form>
-</body>
-</html>
+{% block title_h1 %}Filtrá tus películas favoritas!{% endblock title_h1 %}
+
+{% block contenido %}
+<form action="">
+    <h2>Filtros:</h2>
+    <label for="id_title">Título:</label>
+    {{formulario.title}}<br>
+    <label for="id_director">Director/xs:</label>
+    {{formulario.director}}<br>
+    <label for="id_release_year">Año de lanzamiento:</label>
+    {{formulario.release_year}}<br>
+    <label for="id_length">Menor duración a (en minutos):</label>
+    {{formulario.length}}<br>
+    <label for="id_rating">Mayor puntaje que:</label>
+    {{formulario.rating}}<br>
+    <label for="id_genre">Género:</label>
+    {{formulario.genre}}<br>
+    <input type="submit" value='Buscar Peli'>
+
+    <h2>Lista de pelis cargadas:</h2>
+    {% if movies %}
+    <ul>
+        {% for movie  in movies %}
+            <li>
+                {{movie}} |
+                <a href={% url "movie_details" movie.id %}>Ver más</a> |
+                <a href={% url "edit_movie" movie.id %}>Editar</a> |
+                <a href={% url "delete_movie" movie.id %}>Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+    {% else %} <p>No hay pelis cargadas aún.</p>
+
+    {% endif %}
+</form>
+{% endblock contenido %}
