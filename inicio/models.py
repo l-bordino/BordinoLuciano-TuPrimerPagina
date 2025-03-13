@@ -23,8 +23,8 @@ class Movie(models.Model):
     
     title = models.CharField(max_length=100)
     director = models.CharField(max_length=100)
-    release_year = models.IntegerField()
-    genre = models.CharField(max_length=20, choices=GENRE_CHOICES, default='Otro')
+    release_year = models.DateField()
+    genre = models.CharField(max_length=20, choices=GENRE_CHOICES)
     length = models.IntegerField() 
     rating = models.IntegerField(choices=RATING_CHOICES, blank=True, null=True)
     
@@ -34,4 +34,8 @@ class Movie(models.Model):
             self.rating = '('+str(self.rating)+'*)'
         else:
             self.rating=''
+            
+        if self.release_year:
+            self.release_year = self.release_year.year
+            
         return f'"{self.title}" ({self.release_year}) - {self.director} [{self.length} m]. {self.rating}'

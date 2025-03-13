@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_head %}Eliminar{% endblock title_head %}
+
+{% block title_h1 %}Eliminar {{movie.title}}{% endblock title_h1 %}
+
+{% block contenido %}
+<form action="", method="POST">
+    {% csrf_token %}
+    <p>¿Confirma que desea eliminar la peli {{movie.title}}?</p>
+    <input type="submit" value="Confirmar">
+</form>
+{% endblock contenido %}

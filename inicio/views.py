@@ -1,6 +1,12 @@
 from django.shortcuts import redirect, render
 from inicio.forms import CreateMovie, FindMovie, EditMovie
 from inicio.models import Movie
+from django.views.generic.edit import UpdateView, DeleteView
+from django.urls import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
+# region vistas comunes
 
 def inicio(request):
     return render(request, 'inicio/inicio.html')
@@ -28,7 +34,8 @@ def create_movie(request):
             return redirect('movie_list')
     
     return render(request, 'inicio/create_movie.html', {'formulario': formulario})
-    
+   
+
 def movie_list(request):
     movies = Movie.objects.all()
     formulario = FindMovie(request.GET)
@@ -59,25 +66,42 @@ def movie_list(request):
         
     return render(request, 'inicio/movie_list.html', {'movies': movies, 'formulario': formulario})
 
-def delete_movie(request, movie_id):
-    movie = Movie.objects.get(id=movie_id)
-    movie.delete()
-    return redirect('movie_list')
-    
+# def delete_movie(request, movie_id):
+#     movie = Movie.objects.get(id=movie_id)
+#     movie.delete()
+#     return redirect('movie_list')
+@login_required   
 def movie_details(request, movie_id):
     movie = Movie.objects.get(id=movie_id)
     return render(request, 'inicio/movie_details.html', {'movie': movie} )
 
-def edit_movie(request, movie_id):
+# def edit_movie(request, movie_id):
     
-    movie = Movie.objects.get(id=movie_id)
+#     movie = Movie.objects.get(id=movie_id)
     
-    if request.method == "POST":
-        formulario = EditMovie(request.POST, instance=movie)
-        if formulario.is_valid():
-            formulario.save()
-        return redirect('movie_list')
-    else:
-        formulario = EditMovie(instance=movie)
-    return render(request, 'inicio/edit_movie.html', {'formulario': formulario})
+#     if request.method == "POST":
+#         formulario = EditMovie(request.POST, instance=movie)
+#         if formulario.is_valid():
+#             formulario.save()
+#         return redirect('movie_list')
+#     else:
+#         formulario = EditMovie(instance=movie)
+#     return render(request, 'inicio/edit_movie.html', {'formulario': formulario})
             
+# endregion
+
+# region CBV
+
+class MovieUpdateView(LoginRequiredMixin, UpdateView):
+    model = Movie
+    template_name = 'inicio/CBV/edit_movie.html'
+    # fields = '__all__'
+    form_class = EditMovie
+    success_url = reverse_lazy('movie_list')
+    
+class MovieDeleteView(LoginRequiredMixin, DeleteView):
+    model = Movie
+    template_name = 'inicio/CBV/delete_movie.html'
+    success_url = reverse_lazy('movie_list')
+
+# endregion

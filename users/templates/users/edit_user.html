@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_head %}Editar Usuario{% endblock title_head %}
+
+{% block title_h1 %}Editar Usuario{% endblock title_h1 %}
+
+{% block contenido %}
+<form action={% url "edit_user" %} method="POST" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{formulario}}
+    <input type="submit" value="Editar">
+</form>
+<a href={% url "change_pw" %}>Cambiar contraseña</a>
+{% endblock contenido %}

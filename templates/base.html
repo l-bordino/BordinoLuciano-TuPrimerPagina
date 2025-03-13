@@ -29,7 +29,22 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href={% url "create_movie" %}>Crear Peli Nueva</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url "movie_list" %}>Listado de pelis</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link" href={% url "edit_user" %}>
+                            {% if request.user.additionalinfo.avatar %}
+                            <img src={{request.user.additionalinfo.avatar.url}} alt="" height='40px'>
+                            {% endif %}
+                            {{request.user.username}}</a></li>
+                        {% if request.user.is_authenticated %}
+                        <li class="btn btn-danger nav-item">
+                            <form action={% url "logout" %} method="post">
+                                {% csrf_token %}
+                                <input type="submit" value="Logout">
+                            </form>
+                        </li>
+                        {% else %}
+                        <li class="btn btn-primary nav-item"><a class="nav-link" href={% url "login" %}>Login</a></li>
+                        <li class="btn btn-info nav-item"><a class="nav-link" href={% url "register" %}>Registrarse</a></li>
+                        {% endif %}
                     </ul>
                 </div>
             </div>

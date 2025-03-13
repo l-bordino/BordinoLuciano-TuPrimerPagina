@@ -1,0 +1,6 @@
+- hacer la página intermedia cuando apreto en el usuario
+- ver el PasswordChangeForm, para que no quede feo el cambio de contra
+- poner imagen por defecto en el base para gente sin avatar
+- agregar imgfield a Movie (poster)
+- agregar a AdditionalInfo un campo más a elección (genero de peli favorito)
+- video
