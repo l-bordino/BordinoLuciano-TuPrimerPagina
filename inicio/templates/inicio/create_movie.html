@@ -6,7 +6,7 @@
 {% block title_h1 %}Acá vas a agregar tu película!{% endblock title_h1 %}
 
 {% block contenido %}
-<form action="", method="POST">
+<form action="", method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <label for="id_title">Título:</label>
     {{formulario.title}} <br>
@@ -20,6 +20,8 @@
     {{formulario.genre}}<br>
     <label for="id_rating">Puntaje:</label>
     {{formulario.rating}}<br>
+    <label for="id_poster">Póster:</label>
+    {{ formulario.poster }}<br> 
     <input type="submit" value="Agregá tu peli">
 </form>
 {% endblock contenido %}

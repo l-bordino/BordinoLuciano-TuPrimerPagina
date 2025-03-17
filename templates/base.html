@@ -29,21 +29,28 @@
                     <ul class="navbar-nav ms-auto my-2 my-lg-0">
                         <li class="nav-item"><a class="nav-link" href={% url "create_movie" %}>Crear Peli Nueva</a></li>
                         <li class="nav-item"><a class="nav-link" href={% url "movie_list" %}>Listado de pelis</a></li>
-                        <li class="nav-item"><a class="nav-link" href={% url "edit_user" %}>
+                        <li class="nav-item"><a class="nav-link" href={% url "user_info" %}>
                             {% if request.user.additionalinfo.avatar %}
-                            <img src={{request.user.additionalinfo.avatar.url}} alt="" height='40px'>
+                            <img src={{request.user.additionalinfo.avatar.url}} alt="" height='40px' class="rounded-circle">
+                            {% elif not request.user.additionalinfo.avatar and request.user.is_authenticated%}
+                            <img src={% static 'assets/img/default_avatar.png' %} alt="" height='40px' class="rounded-circle">
                             {% endif %}
                             {{request.user.username}}</a></li>
                         {% if request.user.is_authenticated %}
-                        <li class="btn btn-danger nav-item">
-                            <form action={% url "logout" %} method="post">
+                        <li class="nav-item">
+                            <form action="{% url 'logout' %}" method="post" class="d-inline">
                                 {% csrf_token %}
-                                <input type="submit" value="Logout">
+                                <button type="submit" class="btn btn-danger nav-link px-3 py-2 text-white fw-bold rounded">Logout</button>
                             </form>
                         </li>
+                        
                         {% else %}
-                        <li class="btn btn-primary nav-item"><a class="nav-link" href={% url "login" %}>Login</a></li>
-                        <li class="btn btn-info nav-item"><a class="nav-link" href={% url "register" %}>Registrarse</a></li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary nav-link px-3 py-2 text-white fw-bold rounded" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-info nav-link px-3 py-2 text-white fw-bold rounded" href="{% url 'register' %}">Registrarse</a>
+                        </li>
                         {% endif %}
                     </ul>
                 </div>

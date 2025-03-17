@@ -1,5 +1,7 @@
 from django.urls import path, include
-from inicio.views import MovieUpdateView, MovieDeleteView, create_movie, inicio, movie_list, movie_details
+from inicio.views import MovieUpdateView, MovieDeleteView, create_movie, inicio, movie_list, movie_details, about_me
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     #region urls normales
@@ -13,5 +15,6 @@ urlpatterns = [
     #region urls CBV
     path('edit-movie/<int:pk>/', MovieUpdateView.as_view(), name='edit_movie'),
     path('delete-movie/<int:pk>/', MovieDeleteView.as_view(), name='delete_movie'),
+    path('about-me/', about_me, name='about_me'),
     #endregion
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

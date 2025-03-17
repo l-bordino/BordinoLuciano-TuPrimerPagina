@@ -1,19 +1,40 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title_head %}{{movie.title}} ({{movie.release_year}}){% endblock title_head %}
+{% block title_head %}{{ movie.title }} ({{ movie.release_year }}){% endblock title_head %}
 
-{% block title_h1 %}Información de {{movie.title}}{% endblock title_h1 %}
+{% block title_h1 %}Información de {{ movie.title }}{% endblock title_h1 %}
 
 {% block contenido %}
-<ul>
-    <li>Título: {{movie.title}}</li>
-    <li>Director/xs: {{movie.director}}</li>
-    <li>Fecha de lanzamiento: {{movie.release_year}}</li>
-    <li>Duración: {{movie.length}}</li>
-    {% if movie.rating %}
-    <li>Puntaje: {{movie.rating}}</li>
+<div class="table-responsive">
+    {% if movie.poster %}
+        <img src="{{ movie.poster.url }}" alt="Poster de {{ movie.title }}" width="250">
     {% endif %}
-    <li>Género: {{movie.genre}}</li>
-</ul>
+    <table border="1" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Director/xs</th>
+                <th>Fecha de lanzamiento</th>
+                <th>Duración (minutos)</th>
+                <th>Puntaje</th>
+                <th>Género</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ movie.title }}</td>
+                <td>{{ movie.director }}</td>
+                <td>{{ movie.release_year }}</td>
+                <td>{{ movie.length }}</td>
+                <td>{% if movie.rating %}{{ movie.rating }}{% else %}No disponible{% endif %}</td>
+                <td>{{ movie.get_genre_display }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div style="margin-top: 20px;">
+        <a class="btn btn-primary" href="{% url 'movie_list' %}">Volver al listado</a>
+    </div>
+</div>
 {% endblock contenido %}

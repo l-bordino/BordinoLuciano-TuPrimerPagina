@@ -8,8 +8,8 @@
 {% block contenido %}
 <form action={% url "edit_user" %} method="POST" enctype='multipart/form-data'>
     {% csrf_token %}
-    {{formulario}}
+    {{formulario.as_p}}
     <input type="submit" value="Editar">
 </form>
-<a href={% url "change_pw" %}>Cambiar contraseña</a>
+<a class='btn btn-danger' href={% url "change_pw" %}>Cambiar contraseña</a>
 {% endblock contenido %}

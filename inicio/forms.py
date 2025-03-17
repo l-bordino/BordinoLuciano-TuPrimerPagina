@@ -8,14 +8,15 @@ class CreateMovie(forms.Form):
     genre = forms.ChoiceField(choices=[("", "---")] + Movie.GENRE_CHOICES)
     length = forms.IntegerField() 
     rating = forms.ChoiceField(choices=[("", "---")] + Movie.RATING_CHOICES, required=False)
+    poster = forms.ImageField(required=False)
     
 class FindMovie(forms.Form):
-    title = forms.CharField(max_length=100, required=False)
-    director = forms.CharField(max_length=100, required=False)
-    release_year = forms.DateField(required=False, widget=forms.DateInput(attrs={'type':'date'}))
-    length = forms.IntegerField(required=False) 
-    genre = forms.ChoiceField(choices=[("", "Seleccione un género")] + Movie.GENRE_CHOICES, required=False)
-    rating = forms.ChoiceField(choices=[("", "Seleccione un rating")] + Movie.RATING_CHOICES, required=False)
+    title = forms.CharField(max_length=100, required=False, label='Título')
+    director = forms.CharField(max_length=100, required=False, label="Director/x/s")
+    release_year = forms.DateField(required=False, widget=forms.DateInput(attrs={'type':'date'}), label="Fecha de estreno")
+    length = forms.IntegerField(required=False, label='Duración (en minutos)') 
+    genre = forms.ChoiceField(choices=[("", "---")] + Movie.GENRE_CHOICES, required=False, label="Género")
+    rating = forms.ChoiceField(choices=[("", "---")] + Movie.RATING_CHOICES, required=False,label='Puntaje')
     
 class EditMovie(forms.ModelForm):
     

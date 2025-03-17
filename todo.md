@@ -1,6 +1,11 @@
-- hacer la página intermedia cuando apreto en el usuario
-- ver el PasswordChangeForm, para que no quede feo el cambio de contra
-- poner imagen por defecto en el base para gente sin avatar
-- agregar imgfield a Movie (poster)
-- agregar a AdditionalInfo un campo más a elección (genero de peli favorito)
+- ~~hacer la página intermedia cuando apreto en el usuario~~
+- ~~ver el PasswordChangeForm, para que no quede feo el cambio de contra~~
+- ~~poner imagen por defecto en el base para gente sin avatar~~
+- ~~agregar imgfield a Movie (poster)~~
+- ~~agregar a AdditionalInfo un campo más a elección (genero de peli favorito)~~
 - video
+- README update
+- acceso a una vista "Acerca de mi"/"About" (TERMINAR)
+- validar cambio y agregado de poster en la edicion de pelicula
+- ~~agregar un campo al movie que sea el usuario que lo crea~~
+- ~~Mensaje que de aviso en caso de no haber ningun objeto creado o al utilizar el buscador no encontrar tampoco algun objeto~~

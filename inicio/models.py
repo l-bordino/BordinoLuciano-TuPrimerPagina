@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Movie(models.Model):
@@ -21,21 +22,15 @@ class Movie(models.Model):
         ('otro', 'Otro'), 
     ]
     
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='movies')
     title = models.CharField(max_length=100)
     director = models.CharField(max_length=100)
-    release_year = models.DateField()
+    release_year = models.DateField(blank=True, null=True)
     genre = models.CharField(max_length=20, choices=GENRE_CHOICES)
     length = models.IntegerField() 
     rating = models.IntegerField(choices=RATING_CHOICES, blank=True, null=True)
+    poster = models.ImageField(upload_to='posters', null=True, blank=True)
     
     def __str__(self):
-        
-        if self.rating:
-            self.rating = '('+str(self.rating)+'*)'
-        else:
-            self.rating=''
             
-        if self.release_year:
-            self.release_year = self.release_year.year
-            
-        return f'"{self.title}" ({self.release_year}) - {self.director} [{self.length} m]. {self.rating}'
+        return f'" {self.title}" ({self.release_year.year or ''}) - {self.director} [{self.length} m]. {self.rating or ''}'

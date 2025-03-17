@@ -6,20 +6,26 @@
 {% block title_h1 %}Editar tu peli{% endblock title_h1 %}
 
 {% block contenido %}
-<form action="", method="POST">
+<form action="{% url 'edit_movie' pk=form.instance.pk %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <label for="id_title">Título:</label>
-    {{form.title}} <br>
+    {{ form.title }} <br>
     <label for="id_director">Director/xs:</label>
-    {{form.director}}<br>
+    {{ form.director }}<br>
     <label for="id_release_year">Fecha de lanzamiento:</label>
-    {{form.release_year}}<br>
+    {{ form.release_year }}<br>
     <label for="id_length">Duración (en minutos):</label>
-    {{form.length}}<br>
+    {{ form.length }}<br>
     <label for="id_genre">Género:</label>
-    {{form.genre}}<br>
+    {{ form.genre }}<br>
     <label for="id_rating">Puntaje:</label>
-    {{form.rating}}<br>
+    {{ form.rating }}<br>
+    {% if form.instance.poster %}
+        <img src="{{ form.instance.poster.url }}" alt="Poster actual" width="200"><br>
+    {% endif %}
+
+    <label for="id_poster">Nuevo Poster:</label>
+    {{ form.poster }}<br>
     <input type="submit" value="Modificá tu peli">
 </form>
 {% endblock contenido %}

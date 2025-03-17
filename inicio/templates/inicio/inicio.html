@@ -5,12 +5,27 @@
 
 {% block title_h1 %}Bienvenido a LetraCaja{% endblock title_h1 %}
 {% block contenido %}
+    <h2>En esta web vas a poder ingresar todas las películas que veas, puntuarlas y filtrarlas cuando y donde quieras</h2><br>
 
-<h2>En esta web vas a poder ingresar todas las películas que veas, puntuarlas y filtrarlas cuando y donde quieras</h2>
 <ul>
-    <li>¿Querés ingresar una peli nueva?</li>
-    <a class='btn btn-success' href={% url "create_movie" %}> Hacé click acá!</a>
-    <li>¿Querés ver el listado de pelis ingresadas y filtrarlas?</li>
-    <a class='btn btn-success' href={% url "movie_list" %}> Hacé click acá!</a>
+    {% if has_movies %}
+    <li>
+        <a class='btn btn-success' href={% url "create_movie" %}>   <h4>Continuá tu aventura creando nuevas pelis!</h4>  </a><br>
+    </li><br>
+    <li>
+
+        <a class='btn btn-success' href={% url "movie_list" %}>   <h4>Mirá y editá tus pelis!</h4>  </a>
+    </li><br>
+    {% else %} 
+ <li>
+
+     <a class='btn btn-success' href={% url "create_movie" %}>   <h4>Comenzá tu aventura creando tu primera peli!</h4> </a>
+ </li><br>
+    {% endif %}
+    <li>
+
+        <a class='btn btn-success' href={% url "about_me" %}>   <h4>Conocé más sobre nosotros!</h4> </a>
+
+    </li><br>
 </ul>
 {% endblock contenido %}

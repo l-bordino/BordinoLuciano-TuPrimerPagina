@@ -10927,8 +10927,9 @@ hr.divider-light {
 }
 
 header.masthead {
-  padding-top: 10rem;
-  padding-bottom: calc(10rem - 4.5rem);
+  height: 50vh;
+  padding-top: 5rem; /* Reduce a la mitad el valor original */
+  padding-bottom: calc(5rem - 4.5rem); /* Reduce a la mitad el valor original */
   background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead.jpg");
   background-position: center;
   background-repeat: no-repeat;
@@ -10936,25 +10937,25 @@ header.masthead {
   background-size: cover;
 }
 header.masthead h1, header.masthead .h1 {
-  font-size: 2.25rem;
+  font-size: 1.5rem; /* Reduce el tamaño del título */
 }
 @media (min-width: 992px) {
   header.masthead {
-    height: 100vh;
-    min-height: 40rem;
-    padding-top: 4.5rem;
-    padding-bottom: 0;
+    height: 50vh; /* Ajusta la altura a la mitad */
+    min-height: 20rem; /* Puedes ajustar según el tamaño que desees */
+    padding-top: 2.25rem; /* Reduces el espaciado superior */
+    padding-bottom: 0; /* Elimina el espaciado inferior */
   }
   header.masthead p {
     font-size: 1.15rem;
   }
   header.masthead h1, header.masthead .h1 {
-    font-size: 3rem;
+    font-size: 1.5rem; /* Reduce el tamaño del título */
   }
 }
 @media (min-width: 1200px) {
   header.masthead h1, header.masthead .h1 {
-    font-size: 3.5rem;
+    font-size: 2.75rem; /* Ajusta aún más para pantallas extra grandes */
   }
 }
 

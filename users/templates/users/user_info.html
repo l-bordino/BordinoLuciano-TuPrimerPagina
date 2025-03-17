@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title_head %}Usuario{% endblock title_head %}
+
+{% block title_h1 %}Información del Usuario{% endblock title_h1 %}
+
+{% block contenido %}
+
+<ul>
+    <li>Usuario: {{ usuario.username }}</li>
+    <li>Email: {{ usuario.email }}</li>
+    {% if usuario.first_name %}
+    <li>Nombre: {{ usuario.first_name }}</li>
+    {% endif %}
+    {% if usuario.last_name %}
+    <li>Apellido: {{ usuario.last_name }}</li>
+    {% endif %}
+    <li>Género Favorito: {{ usuario.additionalinfo.favorite_genre }}</li>
+</ul>
+
+<form action="{% url 'user_info' %}" method="GET" enctype='multipart/form-data'>
+    {% csrf_token %}
+    {{ formulario }}
+</form>
+
+<a class='btn btn-info' href="{% url 'edit_user' %}">Editar datos</a>
+
+{% endblock contenido %}
