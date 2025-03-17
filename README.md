@@ -1,4 +1,4 @@
-En esta aplicación se podrá:
+(Out of date)En esta aplicación se podrá:
 - Crear pelis nuevas (/create_movie): agregar películas en la base de datos con los campos marcados por pantalla (puntaje no requerido)
 - Filtrar películas (/movie_list): desde las películas cargadas, se van a poder filtrar por:
 1) Título: exacto o que contenga alguna caracter o palabra deseada
