@@ -1,5 +1,11 @@
 # VIDEO EXPLICATIVO
 https://drive.google.com/file/d/1SINXiaR4XJJXLjec3EAPNL7YPG1TVu_V/view?usp=drive_link
+
+En el video no muestro la pantalla de inicio cuando el usuario sí tiene cargadas películas. 
+
+Se ve así (link a captura de pantalla):
+
+https://drive.google.com/file/d/1nKof6x5ZGVb_BDScc2eXlrzyoTODVaau/view?usp=sharing
 # Estas son las funcionalidades de la página:
 - Se pueden crear usuarios con nombre, email y contraseña. 
 - Una vez creados, se pueden logear y ver todos los datos del usuario
