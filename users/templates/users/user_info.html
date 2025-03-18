@@ -1,29 +1,44 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title_head %}Usuario{% endblock title_head %}
+{% block title_head %}Perfil de Usuario{% endblock title_head %}
 
-{% block title_h1 %}Información del Usuario{% endblock title_h1 %}
+{% block title_h1 %}
+    Perfil de <span class="text-info">{{ usuario.username }}</span>
+{% endblock title_h1 %}
 
 {% block contenido %}
 
-<ul>
-    <li>Usuario: {{ usuario.username }}</li>
-    <li>Email: {{ usuario.email }}</li>
-    {% if usuario.first_name %}
-    <li>Nombre: {{ usuario.first_name }}</li>
-    {% endif %}
-    {% if usuario.last_name %}
-    <li>Apellido: {{ usuario.last_name }}</li>
-    {% endif %}
-    <li>Género Favorito: {{ usuario.additionalinfo.favorite_genre }}</li>
-</ul>
+<div class="card mx-auto shadow-lg p-4" style="max-width: 500px; background: #f8f9fa; border-radius: 12px;">
+    <div class="card-body text-center">
+        {% if usuario.additionalinfo.avatar %}
+            <img src="{{ usuario.additionalinfo.avatar.url }}" class="rounded-circle border border-3 border-secondary shadow-sm mb-3" width="120" height="120" alt="Avatar de {{ usuario.username }}">
+        {% else %}
+            <img src="{% static 'assets/img/default_avatar.png' %}" class="rounded-circle border border-3 border-secondary shadow-sm mb-3" width="120" height="120" alt="">
+        {% endif %}
 
-<form action="{% url 'user_info' %}" method="GET" enctype='multipart/form-data'>
-    {% csrf_token %}
-    {{ formulario }}
-</form>
+        <h4 class="mb-3 text-primary">{{ usuario.username }}</h4>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item"><strong>Email:</strong> {{ usuario.email }}</li>
+            {% if usuario.first_name %}
+                <li class="list-group-item"><strong>Nombre:</strong> {{ usuario.first_name }}</li>
+            {% endif %}
+            {% if usuario.last_name %}
+                <li class="list-group-item"><strong>Apellido:</strong> {{ usuario.last_name }}</li>
+            {% endif %}
+            <li class="list-group-item"><strong>Género Favorito:</strong> 
+                {% if usuario.additionalinfo.favorite_genre %}
+                    {{ usuario.additionalinfo.get_favorite_genre_display }}
+                {% else %}
+                    No seleccionado
+                {% endif %}
+            </li>
+        </ul>
 
-<a class='btn btn-info' href="{% url 'edit_user' %}">Editar datos</a>
+        <div class="mt-4">
+            <a class="btn btn-info btn-lg" href="{% url 'edit_user' %}">Editar perfil</a>
+        </div>
+    </div>
+</div>
 
 {% endblock contenido %}

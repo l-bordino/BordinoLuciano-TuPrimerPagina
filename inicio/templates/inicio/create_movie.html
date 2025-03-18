@@ -3,25 +3,25 @@
 
 {% block title_head %}Agregá tu película{% endblock title_head %}
 
-{% block title_h1 %}Acá vas a agregar tu película!{% endblock title_h1 %}
+{% block title_h1 %}Acá vas a agregar tu <span class="text-info">película</span>!{% endblock title_h1 %}
 
 {% block contenido %}
 <form action="", method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <label for="id_title">Título:</label>
     {{formulario.title}} <br>
-    <label for="id_director">Director/xs:</label>
+    <br><label for="id_director">Director/xs:</label>
     {{formulario.director}}<br>
-    <label for="id_release_year">Fecha de lanzamiento:</label>
+    <br><label for="id_release_year">Fecha de lanzamiento:</label>
     {{formulario.release_year}}<br>
-    <label for="id_length">Duración (en minutos):</label>
+    <br><label for="id_length">Duración (en minutos):</label>
     {{formulario.length}}<br>
-    <label for="id_genre">Género:</label>
+    <br><label for="id_genre">Género:</label>
     {{formulario.genre}}<br>
-    <label for="id_rating">Puntaje:</label>
+    <br><label for="id_rating">Puntaje:</label>
     {{formulario.rating}}<br>
-    <label for="id_poster">Póster:</label>
+    <br><label for="id_poster">Póster:</label>
     {{ formulario.poster }}<br> 
-    <input type="submit" value="Agregá tu peli">
+    <br><input class='btn btn-info' type="submit" value="Agregá tu peli">
 </form>
 {% endblock contenido %}

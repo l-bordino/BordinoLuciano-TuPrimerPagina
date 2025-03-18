@@ -3,13 +3,13 @@
 
 {% block title_head %}Editar Usuario{% endblock title_head %}
 
-{% block title_h1 %}Editar Usuario{% endblock title_h1 %}
+{% block title_h1 %}Editar <span class="text-info">Usuario</span>{% endblock title_h1 %}
 
 {% block contenido %}
 <form action={% url "edit_user" %} method="POST" enctype='multipart/form-data'>
     {% csrf_token %}
     {{formulario.as_p}}
-    <input type="submit" value="Editar">
+    <input class="btn btn-warning" type="submit" value="Editar">
+    <a class='btn btn-success' href={% url "change_pw" %}>Cambiar contraseña</a>
 </form>
-<a class='btn btn-danger' href={% url "change_pw" %}>Cambiar contraseña</a>
 {% endblock contenido %}

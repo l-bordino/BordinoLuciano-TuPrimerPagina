@@ -3,12 +3,16 @@
 
 {% block title_head %}Cambiar Contraseña{% endblock title_head %}
 
-{% block title_h1 %}Cambiar Contraseña{% endblock title_h1 %}
+{% block title_h1 %}Cambiar <span class="text-info">Contraseña</span>{% endblock title_h1 %}
 
 {% block contenido %}
 <form action={% url "change_pw" %} method="POST">
     {% csrf_token %}
     {{form.as_p}}
-    <input type="submit" value="Cambiar">
+    <input class="btn btn-warning" type="submit" value="Cambiar">
+    <a class='btn btn-danger' href={% url "edit_user" %}>Volver</a>
 </form>
+<br><p>
+
+</p>
 {% endblock contenido %}

@@ -3,12 +3,22 @@
 
 {% block title_head %}{{ movie.title }} ({{ movie.release_year }}){% endblock title_head %}
 
-{% block title_h1 %}Información de {{ movie.title }}{% endblock title_h1 %}
+{% block title_h1 %}Información de <span class="text-info">{{ movie.title }}</span>{% endblock title_h1 %}
 
 {% block contenido %}
 <div class="table-responsive">
     {% if movie.poster %}
-        <img src="{{ movie.poster.url }}" alt="Poster de {{ movie.title }}" width="250">
+    <div class="d-flex justify-content-center mb-3">
+        <div class="border border-3 rounded-3 p-2 shadow-lg" style="max-width: 300px; background: #f8f9fa; border-color: #bbb;">
+            <img src="{{ movie.poster.url }}" alt="Poster de {{ movie.title }}" class="img-fluid rounded">
+        </div>
+    </div>
+    {% else %}
+    <div class="d-flex justify-content-center mb-3">
+        <div class="border border-3 rounded-3 p-2 shadow-lg" style="max-width: 300px; background: #f8f9fa; border-color: #bbb;">
+            <img src={% static '/assets/img/default_poster.png' %} alt="" class="img-fluid rounded">
+        </div>
+    </div>
     {% endif %}
     <table border="1" class="table table-bordered">
         <thead>
@@ -25,7 +35,7 @@
             <tr>
                 <td>{{ movie.title }}</td>
                 <td>{{ movie.director }}</td>
-                <td>{{ movie.release_year }}</td>
+                <td>{% if movie.release_year %}{{ movie.release_year }}{% else %}No disponible{% endif %}</td>
                 <td>{{ movie.length }}</td>
                 <td>{% if movie.rating %}{{ movie.rating }}{% else %}No disponible{% endif %}</td>
                 <td>{{ movie.get_genre_display }}</td>

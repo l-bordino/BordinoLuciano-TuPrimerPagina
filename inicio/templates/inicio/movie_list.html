@@ -3,12 +3,13 @@
 
 {% block title_head %}Listado de Películas{% endblock title_head %}
 
-{% block title_h1 %}Listado de Películas{% endblock title_h1 %}
+{% block title_h1 %}Listado de <span class="text-info">películas</span>{% endblock title_h1 %}
 
 {% block contenido %}
+<p><h3>Filtrá tu peli por:</h3></p>
     <form method="get">
         {{ formulario.as_p }}
-        <input type="submit" value="Buscar">
+        <input class="btn btn-primary" type="submit" value="Buscar">
     </form>
 
     {% if movies %}
@@ -45,4 +46,5 @@
     {% else %}
         <p>No se encontraron películas.</p>
     {% endif %}
+    <a href="{% url 'create_movie' %}" class="btn btn-info">Creá una nueva película</a>
 {% endblock contenido %}

@@ -3,12 +3,12 @@
 
 {% block title_head %}Login{% endblock title_head %}
 
-{% block title_h1 %}Login{% endblock title_h1 %}
+{% block title_h1 %}<span class="text-info">Login</span>{% endblock title_h1 %}
 
 {% block contenido %}
 <form action="", method="POST">
     {% csrf_token %}
     {{formulario}}
-    <input type="submit" value="Login">
+    <input class="btn btn-danger" type="submit" value="Login">
 </form>
 {% endblock contenido %}

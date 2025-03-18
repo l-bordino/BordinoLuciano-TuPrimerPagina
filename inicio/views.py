@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from inicio.forms import CreateMovie, FindMovie, EditMovie
+from inicio.forms import CreateMovie, FEditMovie, FindMovie
 from inicio.models import Movie
 from django.views.generic.edit import UpdateView, DeleteView
 from django.urls import reverse_lazy
@@ -108,7 +108,7 @@ def about_me(request):
 class MovieUpdateView(LoginRequiredMixin, UpdateView):
     model = Movie
     template_name = 'inicio/CBV/edit_movie.html'
-    form_class = EditMovie
+    form_class = FEditMovie
     success_url = reverse_lazy('movie_list')
 
     
@@ -117,13 +117,5 @@ class MovieDeleteView(LoginRequiredMixin, DeleteView):
     template_name = 'inicio/CBV/delete_movie.html'
     success_url = reverse_lazy('movie_list')
     
-    def form_valid(self, form):
-        # Guardar el formulario, incluyendo el archivo de imagen (si se sube uno nuevo)
-        movie = form.save(commit=False)
-        if 'poster' in self.request.FILES:
-            print(f"Archivo recibido: {self.request.FILES['poster']}")
-            movie.poster = self.request.FILES['poster']
-        movie.save()
-        return super().form_valid(form)
 
 # endregion

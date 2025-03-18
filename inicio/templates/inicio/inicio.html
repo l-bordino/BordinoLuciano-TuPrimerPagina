@@ -1,31 +1,56 @@
 {% extends "base.html" %}
-{% load static %}
+{% block title_head %}LetraCaja - Inicio{% endblock %}
+{% block title_h1 %}Bienvenido a <span class="text-info">LetraCaja</span>{% endblock title_h1 %}
 
-{% block title_head %}LetraCaja{% endblock title_head %}
-
-{% block title_h1 %}Bienvenido a LetraCaja{% endblock title_h1 %}
 {% block contenido %}
-    <h2>En esta web vas a poder ingresar todas las películas que veas, puntuarlas y filtrarlas cuando y donde quieras</h2><br>
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold text-primary">¡Registrá y organizá tus películas favoritas!</h2>
+        <p class="lead">Puntualas, filtralas y llevá el control donde y cuando quieras.</p>
+    </div>
 
-<ul>
-    {% if has_movies %}
-    <li>
-        <a class='btn btn-success' href={% url "create_movie" %}>   <h4>Continuá tu aventura creando nuevas pelis!</h4>  </a><br>
-    </li><br>
-    <li>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% if has_movies %}
+        <div class="col">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><i class="bi bi-plus-circle"></i> ¡Creá más películas!</h5>
+                    <p class="card-text">Expandí tu colección agregando nuevas películas.</p>
+                    <a href="{% url 'create_movie' %}" class="btn btn-success">Crear Nueva Película</a>
+                </div>
+            </div>
+        </div>
 
-        <a class='btn btn-success' href={% url "movie_list" %}>   <h4>Mirá y editá tus pelis!</h4>  </a>
-    </li><br>
-    {% else %} 
- <li>
+        <div class="col">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><i class="bi bi-film"></i> ¡Mirá y Editá tus Pelis!</h5>
+                    <p class="card-text">Accedé a tu lista de películas y editá sus detalles cuando lo necesites.</p>
+                    <a href="{% url 'movie_list' %}" class="btn btn-success">Ver Mis Películas</a>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="col">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><i class="bi bi-emoji-smile"></i> ¡Comenzá tu Aventura!</h5>
+                    <p class="card-text">Registrá tu primera película y empezá tu colección.</p>
+                    <a href="{% url 'create_movie' %}" class="btn btn-success">Crear Primera Película</a>
+                </div>
+            </div>
+        </div>
+        {% endif %}
 
-     <a class='btn btn-success' href={% url "create_movie" %}>   <h4>Comenzá tu aventura creando tu primera peli!</h4> </a>
- </li><br>
-    {% endif %}
-    <li>
-
-        <a class='btn btn-success' href={% url "about_me" %}>   <h4>Conocé más sobre nosotros!</h4> </a>
-
-    </li><br>
-</ul>
-{% endblock contenido %}
+        <div class="col">
+            <div class="card shadow-sm h-100 text-center">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><i class="bi bi-people-fill"></i> ¡Conocé Más Sobre Nosotros!</h5>
+                    <p class="card-text">Descubrí la historia detrás de LetraCaja y nuestra pasión por el cine.</p>
+                    <a href="{% url 'about_me' %}" class="btn btn-success">Sobre Nosotros</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

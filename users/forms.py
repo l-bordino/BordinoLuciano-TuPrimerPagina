@@ -8,7 +8,7 @@ class MovieUserCreationForm(UserCreationForm):
     email = forms.EmailField()
     password1 = forms.CharField(label='Contraseña', widget=forms.PasswordInput)
     password2 = forms.CharField(label='Repetir contraseña', widget=forms.PasswordInput)
-    favorite_genre = forms.ChoiceField(choices=[("", "---")] + Movie.GENRE_CHOICES, required=False)
+    favorite_genre = forms.ChoiceField(choices=[("", "----------")] + Movie.GENRE_CHOICES, required=False)
     
     class Meta:
         model = User
@@ -20,7 +20,7 @@ class MovieUserChangeForm(UserChangeForm):
     email = forms.EmailField()
     first_name = forms.CharField(label='Nombre')
     last_name = forms.CharField(label='Apellido')
-    favorite_genre = forms.ChoiceField(choices=[("", "---")] + Movie.GENRE_CHOICES, required=False, label="Género favorito")
+    favorite_genre = forms.ChoiceField(choices=[("", "----------")] + Movie.GENRE_CHOICES, required=False, label="Género favorito")
     avatar = forms.ImageField(required=False)
     
     class Meta:

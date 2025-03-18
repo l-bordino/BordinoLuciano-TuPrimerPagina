@@ -3,8 +3,76 @@
 
 {% block title_head %}Sobre nosotros{% endblock title_head %}
 
-{% block title_h1 %}Sobre nosotros!{% endblock title_h1 %}
+{% block title_h1 %}Sobre <span class="text-info">nosotros</span>{% endblock title_h1 %}
 
 {% block contenido %}
-<h1>hola!</h1>
+<div class="container mt-5">
+    <div class="text-center mb-4">
+        <h1 class="display-4 fw-bold text-primary">¡Bienvenido a <span class="text-info">LetraCaja</span>!</h1>
+        <p class="lead">Agregá, editá y llevá el control de tus películas favoritas donde y cuando quieras.</p>
+    </div>
+
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        <div class="col">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><i class="bi bi-star-fill"></i> Puntúa tus Pelis</h5>
+                    <p class="card-text">Dale un puntaje a cada película y llevá el registro de tus favoritas.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><i class="bi bi-funnel-fill"></i> Filtrado Avanzado</h5>
+                    <p class="card-text">Filtrá las películas por género, director o año para encontrarlas rápidamente.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><i class="bi bi-image-fill"></i> Agregá Posters</h5>
+                    <p class="card-text">Personalizá cada ficha con un poster para que se vea aún mejor.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><i class="bi bi-heart-fill"></i> Género Favorito</h5>
+                    <p class="card-text">Tus películas de género favorito siempre estarán en la cima de la lista.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><i class="bi bi-pencil-square"></i> Editá tus Datos</h5>
+                    <p class="card-text">Cambiá cualquier dato de tus películas cuando lo necesites.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col">
+            <div class="card shadow-sm h-100">
+                <div class="card-body">
+                    <h5 class="card-title text-success"><i class="bi bi-journal-bookmark-fill"></i> Diario Cinematográfico</h5>
+                    <p class="card-text">Llevá un diario de tu pasión por el cine, guardando cada experiencia.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center mt-5">
+        <p class="fs-5">¿Qué esperás? ¡Comenzá tu aventura ahora mismo!</p>
+        <a href="{% url 'create_movie' %}" class="btn btn-success btn-lg shadow-sm">
+            <i class="bi bi-plus-circle"></i> ¡Crear tus Películas aquí!
+        </a>
+    </div>
+</div>
 {% endblock contenido %}

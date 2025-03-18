@@ -3,29 +3,39 @@
 
 {% block title_head %}Editar{% endblock title_head %}
 
-{% block title_h1 %}Editar tu peli{% endblock title_h1 %}
+{% block title_h1 %}Editar tu <span class="text-info">peli</span>{% endblock title_h1 %}
 
 {% block contenido %}
 <form action="{% url 'edit_movie' pk=form.instance.pk %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
-    <label for="id_title">Título:</label>
+    <label for="pk_title">Título:</label>
     {{ form.title }} <br>
-    <label for="id_director">Director/xs:</label>
+    <label for="pk_director">Director/xs:</label>
     {{ form.director }}<br>
-    <label for="id_release_year">Fecha de lanzamiento:</label>
+    <label for="pk_release_year">Fecha de lanzamiento:</label>
     {{ form.release_year }}<br>
-    <label for="id_length">Duración (en minutos):</label>
+    <label for="pk_length">Duración (en minutos):</label>
     {{ form.length }}<br>
-    <label for="id_genre">Género:</label>
+    <label for="pk_genre">Género:</label>
     {{ form.genre }}<br>
-    <label for="id_rating">Puntaje:</label>
+    <label for="pk_rating">Puntaje:</label>
     {{ form.rating }}<br>
-    {% if form.instance.poster %}
-        <img src="{{ form.instance.poster.url }}" alt="Poster actual" width="200"><br>
+    <label for="pk_poster">Poster:</label>
+    {% if movie.poster %}
+    <div class="d-flex justify-content-left mb-3">
+        <div class="border border-3 rounded-3 p-2 shadow-lg" style="max-width: 300px; background: #f8f9fa; border-color: #bbb;">
+            <img src="{{ movie.poster.url }}" alt="Poster de {{ movie.title }}" class="img-fluid rounded">
+        </div>
+    </div>
+    {% else %}
+    <div class="d-flex justify-content-left mb-3">
+        <div class="border border-3 rounded-3 p-2 shadow-lg" style="max-width: 300px; background: #f8f9fa; border-color: #bbb;">
+            <img src={% static '/assets/img/default_poster.png' %} alt="" class="img-fluid rounded">
+        </div>
+    </div>
     {% endif %}
-
-    <label for="id_poster">Nuevo Poster:</label>
-    {{ form.poster }}<br>
-    <input type="submit" value="Modificá tu peli">
+    {{ form.poster }}
+    <br><input class='btn btn-danger' type="submit" value="Modificá tu peli">
+    <a class='btn btn-info' href={% url "movie_list" %}>Volver</a>
 </form>
 {% endblock contenido %}

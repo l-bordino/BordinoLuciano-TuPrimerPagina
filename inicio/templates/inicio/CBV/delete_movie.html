@@ -9,6 +9,7 @@
 <form action="", method="POST">
     {% csrf_token %}
     <p>¿Confirma que desea eliminar la peli {{movie.title}}?</p>
-    <input type="submit" value="Confirmar">
+    <input class='btn btn-danger' type="submit" value="Confirmar">
+    <a class='btn btn-info' href={% url "movie_list" %}>Cancelar</a>
 </form>
 {% endblock contenido %}
